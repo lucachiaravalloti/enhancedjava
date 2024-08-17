@@ -75,7 +75,7 @@ public class Person {
 	[...]
 }
 ```
-3. Write the class model extending the abstract class EnhancedAbstractTableModel, you have to implement only one method which signature is:
+3. Write yout model class extending the abstract class EnhancedAbstractTableModel, you have to implement only one method which signature is:
 ```
 protected boolean isFieldPresent(TableFields field)
 ```
