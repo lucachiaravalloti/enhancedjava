@@ -40,7 +40,7 @@ public enum TableFields {
 	}
 }
 ```
-2. Write a class holding the values. Your class must have a method which segnature is
+2. Write a class holding the values. Your class must have a method which signature is
 ```
 public Object getField(TableFields field)
 ```
@@ -75,8 +75,31 @@ public class Person {
 	[...]
 }
 ```
-3. Write the class model extending the abstract class EnhancedAbstractTableModel, you have to implement only one method which segnature is:
-  replacing TableFields with the name of your Enum class and deciding which fields you want to be shown in your table.
+3. Write the class model extending the abstract class EnhancedAbstractTableModel, you have to implement only one method which signature is:
 ```
 protected boolean isFieldPresent(TableFields field)
 ```
+replacing TableFields with the name of your Enum class and finally deciding which fields you want to be shown in your table. In our example:
+```
+public class TableModel extends EnhancedAbstractTableModel<TableFields, Person> {
+
+	[...]
+
+	@Override
+	protected boolean isFieldPresent(TableFields field) {
+
+		switch (field) {
+		case CITY:
+		case LASTNAME:
+		case NAME:
+		case PROG:
+		case RECORD_DATE:
+		case STATUS:
+			return true;
+		default:
+			return false;
+		}
+	}
+}
+```
+pay attention to the use of GENERICS.
