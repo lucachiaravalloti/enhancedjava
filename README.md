@@ -24,6 +24,7 @@ The files used in the example are here https://github.com/lucachiaravalloti/enha
    4. Note that if you want the Progessive column to be present, then you have to define the value PROG with columnName property set to null if you want the header title to be empty.
   
 In the example:
+```
 public enum TableFields {
 
 	PROG(null, null), NAME("Name", SwingConstants.RIGHT), LASTNAME("Lastname", SwingConstants.CENTER), CITY("City", null),
@@ -38,5 +39,5 @@ public enum TableFields {
 		this.horizontalAlignment = horizontalAlignment;
 	}
 }
-
+```
 2. Second, write a class holding the value 
