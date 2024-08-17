@@ -23,7 +23,7 @@ import javax.swing.event.ChangeListener;
 import com.github.lucachiaravalloti.enhancedjava.gui.table.EnhancedTable;
 import com.github.lucachiaravalloti.test.enhancedjava.gui.table1.Person.Status;
 
-public class ExampleTable1 {
+public class ExampleTable {
 
 	public static void main(String[] args) {
 
