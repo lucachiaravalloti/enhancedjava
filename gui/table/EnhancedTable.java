@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.RowSorter.SortKey;
@@ -22,14 +23,11 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import ibdatadownloader.datastructure.Security;
-import util.Constant.SecurityField;
-
 public class EnhancedTable extends JTable {
 
 	private static final long serialVersionUID = 1L;
 
-	public EnhancedTable(EnhancedAbstractTableModel<SecurityField, Security> mdl) {
+	public <E extends Enum<?>, T> EnhancedTable(EnhancedAbstractTableModel<E, T> mdl) {
 
 		super(mdl);
 
@@ -129,23 +127,6 @@ public class EnhancedTable extends JTable {
 			}
 		});
 
-		// begin CELL CONTENT ALIGNMENT stuff
-		for (int i = 0; i < getColumnCount(); i++)
-
-			if ((mdl.getColumnClass(i) == String.class || mdl.getColumnClass(i).isEnum())
-					&& i != mdl.getProgColumnIndex()) {
-
-				Integer horizontalAlignment = mdl.getHorizontalAlignment(i);
-
-				if (horizontalAlignment != null) {
-
-					DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-					renderer.setHorizontalAlignment(horizontalAlignment);
-					getColumnModel().getColumn(i).setCellRenderer(renderer);
-				}
-			}
-		// end CELL CONTENT ALIGNMENT stuff
-
 		if (mdl.isProgColumnPresent()) {
 
 			getColumnModel().getColumn(mdl.getProgColumnIndex()).setCellRenderer(new DefaultTableCellRenderer() {
@@ -170,7 +151,7 @@ public class EnhancedTable extends JTable {
 					else
 						label.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
 
-					label.setText("" + rowIndex);
+					label.setText("" + (rowIndex + 1));
 
 					return label;
 				}
@@ -226,5 +207,45 @@ public class EnhancedTable extends JTable {
 		}
 
 		return preferredWidth;
+	}
+
+	public Component prepareRenderer(TableCellRenderer renderer, int rowInView, int columnInView) {
+
+		Component c = super.prepareRenderer(renderer, rowInView, columnInView);
+
+		int columnIndexInModel = convertColumnIndexToModel(columnInView);
+		if (columnIndexInModel != getEnhancedModel().getProgColumnIndex()) {
+
+			if (c instanceof JLabel || c instanceof JCheckBox) {
+
+				Integer horizontalAlignment = getEnhancedModel().getHorizontalAlignment(columnIndexInModel);
+
+				if (horizontalAlignment != null) {
+
+					if (c instanceof JLabel)
+						((JLabel) c).setHorizontalAlignment(horizontalAlignment);
+					else
+						((JCheckBox) c).setHorizontalAlignment(horizontalAlignment);
+				} else {
+
+					Class<?> clss = getModel().getColumnClass(columnIndexInModel);
+
+					if (clss == Number.class || clss == Float.class || clss == Double.class)
+						((JLabel) c).setHorizontalAlignment(SwingConstants.RIGHT);
+					else if (clss == Boolean.class)
+						((JCheckBox) c).setHorizontalAlignment(SwingConstants.CENTER);
+					else
+						((JLabel) c).setHorizontalAlignment(SwingConstants.LEFT);
+				}
+			}
+		}
+
+		return c;
+	}
+
+	@SuppressWarnings("unchecked")
+	public <E extends Enum<?>, T> EnhancedAbstractTableModel<E, T> getEnhancedModel() {
+
+		return (EnhancedAbstractTableModel<E, T>) getModel();
 	}
 }
