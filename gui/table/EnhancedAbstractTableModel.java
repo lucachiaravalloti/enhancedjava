@@ -3,6 +3,7 @@ package com.github.lucachiaravalloti.enhancedjava.gui.table;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -153,10 +154,21 @@ public abstract class EnhancedAbstractTableModel<E extends Enum<?>, T> extends A
 
 	public boolean add(T record) {
 
-		if (!contains(record)) {
+		if (records.add(record)) {
 
-			records.add(record);
 			fireTableRowsInserted(getRowCount(), getRowCount());
+			return true;
+		} else
+
+			return false;
+	}
+
+	public boolean addAll(Collection<? extends T> c) {
+
+		int oldRowCount = getRowCount();
+		if (records.addAll(c)) {
+
+			fireTableRowsInserted(oldRowCount, oldRowCount + c.size() - 1);
 			return true;
 		} else
 
