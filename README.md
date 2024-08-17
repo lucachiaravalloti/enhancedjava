@@ -21,7 +21,7 @@ The files used in the example are here https://github.com/lucachiaravalloti/enha
    1. the order of the enum values will be the order of the columns;
    2. the enum class must have a columnName property that will be the header title of its columns;
    3. the enum class may have a horizontalAlignment property in case you want to set the content alignment of the columns;
-   4. Note that if you want the Progessive column to be present, then you have to define the value PROG with columnName property set to null if you want the header title to be empty.
+   4. Note that if you want the Progessive column to be present, then you have to define the value PROG with columnName property set to null if you want its header title to be empty.
   
 In the example:
 ```
@@ -40,7 +40,11 @@ public enum TableFields {
 	}
 }
 ```
-2. Write a class holding the values, your class must have a method which segnature is in our example:
+2. Write a class holding the values. Your class must have a method which segnature is in our example:
+```
+public Object getField(TableFields field)
+```
+replacing TableFields with the name of your Enum class and returning the fields may be present in your table. In our example:
 ```
 public class Person {
 
@@ -71,14 +75,8 @@ public class Person {
 	[...]
 }
 ```
-2. Write the class model extending the abstract class EnhancedAbstractTableModel, you have to implement only one method which segnature is:
-```
-public Object getField(TableFields field)
-```
-   replacing TableFields with the name of your Enum class and returning which each fields that should be present in the table;
+3. Write the class model extending the abstract class EnhancedAbstractTableModel, you have to implement only one method which segnature is:
+  replacing TableFields with the name of your Enum class and deciding which fields you want to be shown in your table.
 ```
 protected boolean isFieldPresent(TableFields field)
 ```
-   replacing TableFields with the name of your Enum class and deciding which fields you want to be shown in your table.
-
-4. 
