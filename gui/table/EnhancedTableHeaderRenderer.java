@@ -44,7 +44,7 @@ public class EnhancedTableHeaderRenderer extends JPanel implements TableCellRend
 
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-			int rowIndex, int columnIndex) {
+			int rowIndexInView, int columnIndexInView) {
 
 		icon.setIcon(null);
 
@@ -63,7 +63,7 @@ public class EnhancedTableHeaderRenderer extends JPanel implements TableCellRend
 
 			SortKey sortKey = sortKeys.get(i);
 
-			if (sortKey.getColumn() == table.convertColumnIndexToModel(columnIndex)) {
+			if (sortKey.getColumn() == table.convertColumnIndexToModel(columnIndexInView)) {
 
 				icon.setIcon(sortKey.getSortOrder() == SortOrder.ASCENDING ? ascIcon : descIcon);
 
@@ -75,14 +75,16 @@ public class EnhancedTableHeaderRenderer extends JPanel implements TableCellRend
 			}
 		}
 
-		// I need to add some extra width to make the column width fit its contents
-		// I also have to calculate the overall width myself, otherwise the automatic
-		// fit doesn't work
-		int width = 0;
+		// I have to calculate the overall width myself, otherwise the automatic fit
+		// doesn't work
+		int newHeaderWidth = 0;
 		for (Component c : getComponents())
-			width += c.getPreferredSize().width;
+			newHeaderWidth += c.getPreferredSize().width;
 
-		setPreferredSize(new Dimension(10 + width, getPreferredSize().height));
+		// I need to add some extra width to make the column width fit its contents
+		newHeaderWidth += 10;
+
+		setPreferredSize(new Dimension(newHeaderWidth, getPreferredSize().height));
 
 		return this;
 	}
