@@ -1,4 +1,4 @@
-# enhancedjava
+![image](https://github.com/user-attachments/assets/c7ce7d2a-130b-40c5-90f2-739bbb425af2)# enhancedjava
 This repository is to share my produced java library to obtain enhanced java application, particularly related to GUI interface.
 
 Importing just 3 classes you can easily display tables with features that aren't readily available using basic Javax classes.
@@ -40,11 +40,11 @@ public enum TableFields {
 	}
 }
 ```
-2. Write a class holding the values. Your class must have a method which segnature is in our example:
+2. Write a class holding the values. Your class must have a method which segnature is
 ```
 public Object getField(TableFields field)
 ```
-replacing TableFields with the name of your Enum class and returning the fields may be present in your table. In our example:
+replace TableFields with the name of your Enum class and return the fields that may be present in your table. In our example:
 ```
 public class Person {
 
