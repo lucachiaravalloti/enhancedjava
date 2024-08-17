@@ -44,7 +44,7 @@ public enum TableFields {
 ```
 public Object getField(TableFields field)
 ```
-replace TableFields with the name of your Enum class and return the fields that may be present in your table. In our example:
+   replacing TableFields with the name of your Enum class and returning the fields that may be present in your table. In our example:
 ```
 public class Person {
 
