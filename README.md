@@ -20,5 +20,23 @@ The files used in the example are here https://github.com/lucachiaravalloti/enha
 1. First of all define the fields your table has. Fields are one Enum class:
    1. the order of the enum values will be the order of the columns;
    2. the enum class must have a columnName property that will be the header title of its columns;
-   3. the enum class may have a horizontalAlignment property in case you want to set the content alignment of the columns.
-   
+   3. the enum class may have a horizontalAlignment property in case you want to set the content alignment of the columns;
+   4. Note that if you want the Progessive column to be present, then you have to define the value PROG with columnName property set to null if you want the header title to be empty.
+  
+In the example:
+public enum TableFields {
+
+	PROG(null, null), NAME("Name", SwingConstants.RIGHT), LASTNAME("Lastname", SwingConstants.CENTER), CITY("City", null),
+	RECORD_DATE("Record Date", SwingConstants.CENTER), STATUS("Status", null);
+
+	public final String columnName;
+	public final Integer horizontalAlignment;
+
+	TableFields(String columnName, Integer horizontalAlignment) {
+
+		this.columnName = columnName;
+		this.horizontalAlignment = horizontalAlignment;
+	}
+}
+
+2. Second, write a class holding the value 
