@@ -1,7 +1,7 @@
 # enhancedjava
 This repository is to share my produced java library to obtain enhanced java application, particularly related to GUI interface.
 
-With just 3 classes you can easily display tables with functionality that isn't readily available using basic Javax classes.
+Importing just 3 classes you can easily display tables with features that aren't readily available using basic Javax classes.
 
 You can immediately have a table with:
 1. Multiple column sort visualized with arrow icon and number of the column in the ordering sequence, obtained holding SHIFT key and clicking on the header;
