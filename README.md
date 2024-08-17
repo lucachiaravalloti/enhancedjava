@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/c7ce7d2a-130b-40c5-90f2-739bbb425af2)# enhancedjava
+# enhancedjava
 This repository is to share my produced java library to obtain enhanced java application, particularly related to GUI interface.
 
 Importing just 3 classes you can easily display tables with features that aren't readily available using basic Javax classes.
