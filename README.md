@@ -17,7 +17,7 @@ Here is a video on youtube about the above features:
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/lX15lL8aTiw/0.jpg)](https://www.youtube.com/watch?v=lX15lL8aTiw)
 
 # ExampleTable explained
-The files used in the example are here https://github.com/lucachiaravalloti/enhancedjava/tree/main/com/github/lucachiaravalloti/test/enhancedjava/gui/table1
+The files used in the above example are here https://github.com/lucachiaravalloti/enhancedjava/tree/main/com/github/lucachiaravalloti/test/enhancedjava/gui/table1
 
 1. First of all define the fields your table has. Fields are one Enum class:
    1. the order of the enum values will be the order of the columns;
