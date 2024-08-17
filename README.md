@@ -12,4 +12,5 @@ You can immediately have a table with:
 6. Many other features will be added soon.
 
 Here is a video about the above features:
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/lX15lL8aTiw/0.jpg)](https://www.youtube.com/watch?v=lX15lL8aTiw)
