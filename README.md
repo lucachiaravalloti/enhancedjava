@@ -40,7 +40,7 @@ public enum TableFields {
 	}
 }
 ```
-2. Second, write a class holding the values, like this:
+2. Write a class holding the values, your class must have a method which segnature is in our example:
 ```
 public class Person {
 
@@ -71,4 +71,14 @@ public class Person {
 	[...]
 }
 ```
+2. Write the class model extending the abstract class EnhancedAbstractTableModel, you have to implement only one method which segnature is:
+```
+public Object getField(TableFields field)
+```
+   replacing TableFields with the name of your Enum class and returning which each fields that should be present in the table;
+```
+protected boolean isFieldPresent(TableFields field)
+```
+   replacing TableFields with the name of your Enum class and deciding which fields you want to be shown in your table.
+
 4. 
