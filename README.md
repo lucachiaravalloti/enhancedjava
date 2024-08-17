@@ -77,7 +77,7 @@ public class Person {
 	[...]
 }
 ```
-3. Write yout model class extending the abstract class EnhancedAbstractTableModel. You have to implement only one method with this signature
+3. Write your model class extending the abstract class EnhancedAbstractTableModel. You have to implement only one method with this signature
 ```
 protected boolean isFieldPresent(TableFields field)
 ```
@@ -105,3 +105,18 @@ public class TableModel extends EnhancedAbstractTableModel<TableFields, Person> 
 }
 ```
 pay attention to the use of GENERICS.
+   4. Your table is ready, you need only to instance an EnhancedTable object passing one istance of your model class. After that use the table as it was a basic JTable. In our example:
+```
+public class ExampleTable {
+
+	public static void main(String[] args) {
+
+		TableModel tableModel = new TableModel(loadPersons());
+		EnhancedTable table = new EnhancedTable(tableModel) 
+
+		[...]
+	}
+
+	[...]
+}
+``` 
