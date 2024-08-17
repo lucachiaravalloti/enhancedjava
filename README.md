@@ -105,7 +105,8 @@ public class TableModel extends EnhancedAbstractTableModel<TableFields, Person> 
 }
 ```
 pay attention to the use of GENERICS.
-   4. Your table is ready, you need only to instance an EnhancedTable object passing one istance of your model class. After that use the table as it was a basic JTable. In our example:
+   
+4. Your table is ready, you need only to instance an EnhancedTable object passing one istance of your model class. After that use the table as it was a basic JTable. In our example:
 ```
 public class ExampleTable {
 
