@@ -42,7 +42,7 @@ public enum TableFields {
 	}
 }
 ```
-2. Write a class holding the values. Your class must have a method which signature is
+2. Write a class holding the values. Your class must have one method with this signature
 ```
 public Object getField(TableFields field)
 ```
@@ -77,7 +77,7 @@ public class Person {
 	[...]
 }
 ```
-3. Write yout model class extending the abstract class EnhancedAbstractTableModel. You have to implement only one method which signature is:
+3. Write yout model class extending the abstract class EnhancedAbstractTableModel. You have to implement only one method with this signature
 ```
 protected boolean isFieldPresent(TableFields field)
 ```
