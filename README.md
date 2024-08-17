@@ -40,4 +40,35 @@ public enum TableFields {
 	}
 }
 ```
-2. Second, write a class holding the value 
+2. Second, write a class holding the values, like this:
+```
+public class Person {
+
+	String name, lastname, city;
+	Date date;
+	Status status;
+
+	[...]
+
+	public Object getField(TableFields field) {
+
+		switch (field) {
+		case CITY:
+			return city;
+		case LASTNAME:
+			return lastname;
+		case NAME:
+			return name;
+		case RECORD_DATE:
+			return date;
+		case STATUS:
+			return status;
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
+
+	[...]
+}
+```
+4. 
