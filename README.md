@@ -9,7 +9,6 @@ You can immediately have a table with:
 3. One column showing progressive numbers to count the rows in the table;
 4. All columns fitted to their content with one double-click on the prog column (see point 3.) if present;
 5. Every column content can be aligned very easily to LEFT/CENTER/RIGHT.
-6. Many other features will be added soon.
 
 # Video showing the features of EnhancedTable
 Here is a video on youtube about the above features:
