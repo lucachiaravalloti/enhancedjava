@@ -28,7 +28,7 @@ public class ExampleTable {
 	public static void main(String[] args) {
 
 		TableModel tableModel = new TableModel(loadPersons());
-		EnhancedTable table = new EnhancedTable(tableModel) 
+		EnhancedTable<TableFields, Person> table = new EnhancedTable<>(tableModel) 
 		{
 			
 			private static final long serialVersionUID = 1L;
