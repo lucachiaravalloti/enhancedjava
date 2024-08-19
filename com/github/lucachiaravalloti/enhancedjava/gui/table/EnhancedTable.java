@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JCheckBox;
@@ -23,11 +24,11 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-public class EnhancedTable extends JTable {
+public class EnhancedTable<E extends Enum<?>, T> extends JTable {
 
 	private static final long serialVersionUID = 1L;
 
-	public <E extends Enum<?>, T> EnhancedTable(EnhancedAbstractTableModel<E, T> mdl) {
+	public EnhancedTable(EnhancedAbstractTableModel<E, T> mdl) {
 
 		super(mdl);
 
@@ -244,8 +245,19 @@ public class EnhancedTable extends JTable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <E extends Enum<?>, T> EnhancedAbstractTableModel<E, T> getEnhancedModel() {
+	public EnhancedAbstractTableModel<E, T> getEnhancedModel() {
 
 		return (EnhancedAbstractTableModel<E, T>) getModel();
+	}
+
+	public List<T> getSelectedRecords() {
+
+		int[] selectedRows = getSelectedRows();
+		List<T> selectedRecords = new LinkedList<T>();
+		for (int i : selectedRows)
+			
+			selectedRecords.add(getEnhancedModel().getRecordAt(convertColumnIndexToModel(i)));
+
+		return selectedRecords;
 	}
 }
